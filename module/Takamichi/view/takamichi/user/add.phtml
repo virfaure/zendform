@@ -1,0 +1,40 @@
+<div class="jumbotron">
+    <h1>Create User</h1>
+</div>
+
+<div class="row">
+
+    <div class="col">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Create a user') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                <?php 
+                    $form->setAttribute('action', $this->url('takamichi', array('controller' => 'user', 'action' => 'add')));
+                    $form->setAttribute('class', 'form-horizontal');
+                    $form->prepare();
+
+                    echo $this->form()->openTag($form);
+                    
+                    foreach ($form as $element) : ?>
+                        <div class="control-group <?php if($this->formElementErrors($element)) {echo "error";} ?>">
+                            <label class="control-label"><?php echo $element->getLabel() ?></label>
+                            <div class="controls">
+                                <?php echo $this->formElement($element); ?>
+                                <?php if($this->formElementErrors($element)): ?>
+                                    <span class="help-inline">
+                                        <?php echo $this->formElementErrors($element) ?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    <?php echo $this->form()->closeTag(); ?>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
