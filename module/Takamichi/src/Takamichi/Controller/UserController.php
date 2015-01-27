@@ -12,6 +12,7 @@ namespace Takamichi\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 
 use Takamichi\Form\UserForm;       
+use Takamichi\Form\Filter\UserFormFilter;       
  
 class UserController extends AbstractActionController
 {
@@ -22,6 +23,7 @@ class UserController extends AbstractActionController
         
         // Get User Form
         $userForm = new UserForm();
+        $userForm->setInputFilter(new UserFormFilter());
         
         $request = $this->getRequest();
         if ($request->isPost()) {

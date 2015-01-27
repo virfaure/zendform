@@ -32,14 +32,6 @@ class UserForm extends Form
             'attributes'    => array(
                 'class'     => 'form-control',
             ),
-            'filters' => array(
-                array(
-                    'name' => 'Alnum',
-                    'name' => 'StripTags',
-                    'name' => 'StringTrim',
-                ),
-            ),
-            'required' => true,
         ));
         $this->add(array(
             'name' => 'password',
@@ -50,32 +42,15 @@ class UserForm extends Form
             'attributes'    => array(
                 'class'     => 'form-control',
             ),
-            'filters' => array(
-                array(
-                    'name' => 'Alnum',
-                    'name' => 'StripTags',
-                    'name' => 'StringTrim',
-                ),
-            ),
-            'required' => true,
         ));
         $this->add(array(
             'name' => 'password_confirmation',
-            'type' => 'Text',
+            'type' => 'Password',
             'options' => array(
                 'label' => 'Password Confirmation',
             ),
             'attributes'    => array(
                 'class'     => 'form-control',
-            ),
-            'required' => true,
-            'validators' => array(
-                array(
-                    'name' => 'Identical',
-                    'options' => array(
-                        'token' => 'password',
-                    ),
-                ),
             ),
         ));
         $this->add(array(
@@ -87,12 +62,6 @@ class UserForm extends Form
             'attributes'    => array(
                 'class'     => 'form-control',
             ),
-            'filters' => array(
-                array(
-                    'name' => 'StringTrim',
-                ),
-            ),
-            'required' => true,
         ));
         $this->add(array(
             'name' => 'file_upload',

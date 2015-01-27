@@ -38,3 +38,9 @@
 2015-01-27T16:50:19+01:00 INFO (6): array (
   'username' => '',
 )
+2015-01-27T17:29:52+01:00 INFO (6): --- User Added ---
+2015-01-27T17:29:52+01:00 INFO (6): array (
+  'username' => 'admin',
+  'password' => '2206',
+  'email' => 'bracketscurly@gmail.com',
+)
