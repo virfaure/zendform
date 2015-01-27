@@ -1,10 +1,9 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
+ * UserForm Class
+ * Defines all fields of the UserForm form
  *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @author Virginie FAURE <virfaure@gmail.com>
  */
 
 namespace Takamichi\Form;
@@ -15,7 +14,8 @@ class UserForm extends Form
 {
     /**
      * Form Constructor
-     * Defines all the fields, the validators and the filters
+     * Defines all the fields
+     * 
      * @param type $name
      */
     public function __construct($name = null)
@@ -67,7 +67,7 @@ class UserForm extends Form
             'name' => 'file_upload',
             'type' => 'File',
             'options' => array(
-                'label' => 'Avatar',
+                'label' => 'Avatar (only .jpg, .jpeg and .png file)',
             ),
         ));
         $this->add(array(

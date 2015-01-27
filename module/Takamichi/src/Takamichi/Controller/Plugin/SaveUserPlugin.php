@@ -1,10 +1,8 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
+ * SaveUserPlugin Class
  *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @author Virginie FAURE <virfaure@gmail.com>
  */
 
 namespace Takamichi\Controller\Plugin;
@@ -12,6 +10,7 @@ namespace Takamichi\Controller\Plugin;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\Log\Writer\Stream;
 use Zend\Log\Logger;
+use Zend\Filter\File\RenameUpload;
 
 class SaveUserPlugin extends AbstractPlugin
 {    
@@ -23,6 +22,31 @@ class SaveUserPlugin extends AbstractPlugin
         'image'
     );
     
+    /**
+     * renameUploadedFile : Move uploaded file to a new path
+     * @param type $file
+     */
+    public function renameUploadedFile($file, $dir = FALSE)
+    { 
+        try{
+            $filter = new RenameUpload($dir);
+            $filter->setUseUploadName(true);
+            $filter->filter($file);
+            
+            return $dir.$file['name'];
+        }catch(\Exception $e){
+            throw new \Exception('Error moving uploaded file to the directory ' . $dir);
+        }
+    }
+    
+    /**
+     * writeDataInFile: write the data of user form in a log file
+     * Throw exception if data empty or inexistant log file
+     * 
+     * @param type $dataForm
+     * @param type $log
+     * @throws \Exception
+     */
     public function writeDataInFile($dataForm, $log = FALSE)
     { 
         if(!$log){

@@ -10,6 +10,15 @@
                 <h3 class="panel-title"><?php echo $this->translate('Create a user') ?></h3>
             </div>
             <div class="panel-body">
+                
+                <?php if($success): ?>
+                    <p class="text-success"><?php echo $success; ?></p>
+                <?php endif; ?>
+                
+                <?php if($error): ?>
+                    <p class="text-danger"><?php echo $error; ?></p>
+                <?php endif; ?>
+                
                 <p>
                 <?php 
                     $form->setAttribute('action', $this->url('takamichi', array('controller' => 'user', 'action' => 'add')));

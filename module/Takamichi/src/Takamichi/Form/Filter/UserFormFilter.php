@@ -1,10 +1,9 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
+ * UserFormFilter Class
+ * Defines all validators and filter for the UserForm
  *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @author Virginie FAURE <virfaure@gmail.com>
  */
 
 namespace Takamichi\Form\Filter;
@@ -13,11 +12,7 @@ use Zend\InputFilter\InputFilter;
 
 class UserFormFilter extends InputFilter
 {
-    /**
-     * Form Constructor
-     * Defines all the fields, the validators and the filters
-     * @param type $name
-     */
+    
     public function __construct()
     {
         $this->add(array(
@@ -38,6 +33,14 @@ class UserFormFilter extends InputFilter
                     'name' => 'Alnum',
                     'name' => 'StripTags',
                     'name' => 'StringTrim',
+                ),
+            ),
+            'validators' => array(
+                array(
+                    'name' => 'StringLength',
+                    'options' => array(
+                        'min' => '6',
+                    ),
                 ),
             ),
             'required' => true,
@@ -62,9 +65,9 @@ class UserFormFilter extends InputFilter
             'name' => 'file_upload',
             'validators' => array(
                 array(
-                    'name' => 'Extension',
+                    'name'    => 'File\MimeType',
                     'options' => array(
-                        'token' => 'password',
+                       'mimeType' => array('image/jpeg', 'image/png'),
                     ),
                 ),
             ),

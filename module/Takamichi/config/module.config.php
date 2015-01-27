@@ -89,7 +89,8 @@ return array(
     
     // Logger File
     'takamichi' => array(
-        'log_file' => __DIR__ . '/../../../public/log/users.log'
+        'upload_dir' => './public/uploads/',
+        'log_file'   => './public/log/users.log'
     ),
         
     // Controller Plugin
